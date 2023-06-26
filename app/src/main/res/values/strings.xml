@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Be consistent</string>
+    <string name="delete">Delete</string>
+    <string name="check_done">Check done</string>
+</resources>
