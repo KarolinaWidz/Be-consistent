@@ -2,4 +2,8 @@
     <string name="app_name">Be consistent</string>
     <string name="delete">Delete</string>
     <string name="check_done">Check done</string>
+    <string name="habit_description">description</string>
+    <string name="add_habit">Add new habit</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
 </resources>

@@ -3,7 +3,6 @@ package edu.karolinawidz.beconsistent.viewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import edu.karolinawidz.beconsistent.database.HabitDao
-import java.lang.IllegalArgumentException
 
 class HabitViewModel(private val dao: HabitDao) : ViewModel() {
 

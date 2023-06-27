@@ -7,6 +7,6 @@ import androidx.room.PrimaryKey
 data class HabitEntity(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val text: String,
-    val streak: Int
+    var streak: Int = 0
 //    val lastUpdate: Date
 )

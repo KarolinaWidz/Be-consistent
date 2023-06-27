@@ -12,6 +12,10 @@ import edu.karolinawidz.beconsistent.viewModel.HabitViewModel
 import edu.karolinawidz.beconsistent.viewModel.HabitViewModelFactory
 
 class HabitListFragment : Fragment(R.layout.fragment_habit_list) {
+    companion object {
+        const val TAG = "HabitListFragment"
+    }
+
     private var _binding: FragmentHabitListBinding? = null
     private val binding get() = _binding!!
     private val viewModel: HabitViewModel by viewModels {
@@ -22,11 +26,17 @@ class HabitListFragment : Fragment(R.layout.fragment_habit_list) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentHabitListBinding.bind(view)
         initList()
+        binding.addHabit.setOnClickListener { showAddHabitDialog() }
     }
 
     private fun initList() {
         val adapter = HabitRecyclerViewAdapter()
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = LinearLayoutManager(this.context)
+    }
+
+    private fun showAddHabitDialog() {
+        val dialog = AddHabitDialogFragment()
+        dialog.show(requireActivity().supportFragmentManager, TAG)
     }
 }
