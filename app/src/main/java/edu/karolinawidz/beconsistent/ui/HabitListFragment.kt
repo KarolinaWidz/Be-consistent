@@ -27,12 +27,16 @@ class HabitListFragment : Fragment(R.layout.fragment_habit_list) {
         _binding = FragmentHabitListBinding.bind(view)
         initList()
         binding.addHabit.setOnClickListener { showAddHabitDialog() }
+
     }
 
     private fun initList() {
         val adapter = HabitRecyclerViewAdapter()
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = LinearLayoutManager(this.context)
+        viewModel.allHabits.observe(viewLifecycleOwner) { habits ->
+            habits.let { adapter.submitList(it) }
+        }
     }
 
     private fun showAddHabitDialog() {

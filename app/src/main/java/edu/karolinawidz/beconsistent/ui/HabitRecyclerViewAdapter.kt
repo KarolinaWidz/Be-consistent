@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
+import edu.karolinawidz.beconsistent.database.Habit
 import edu.karolinawidz.beconsistent.databinding.HabitItemBinding
-import edu.karolinawidz.beconsistent.ui.model.Habit
 
 
 class HabitRecyclerViewAdapter :
@@ -17,7 +17,7 @@ class HabitRecyclerViewAdapter :
         fun bind(habit: Habit) {
             binding.apply {
                 habitDescription.text = habit.text
-                streakBtn.text = habit.streak.toString()
+                streakTextview.text = habit.streak.toString()
             }
         }
     }
@@ -27,7 +27,7 @@ class HabitRecyclerViewAdapter :
             HabitItemBinding.inflate(
                 LayoutInflater.from(
                     parent.context
-                )
+                ), parent, false
             )
         )
     }

@@ -1,10 +1,16 @@
 package edu.karolinawidz.beconsistent.viewModel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.asLiveData
+import edu.karolinawidz.beconsistent.database.Habit
 import edu.karolinawidz.beconsistent.database.HabitDao
 
-class HabitViewModel(private val dao: HabitDao) : ViewModel() {
+
+class HabitViewModel(dao: HabitDao) : ViewModel() {
+
+    val allHabits: LiveData<List<Habit>> = dao.getAll().asLiveData()
 
 }
 

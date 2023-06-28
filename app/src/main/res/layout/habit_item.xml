@@ -4,11 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="4dp">
+    android:layout_margin="4dp">
 
     <TextView
         android:id="@+id/habit_description"
-        android:layout_width="wrap_content"
+        android:layout_width="125dp"
+        android:padding="8dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -16,20 +17,20 @@
         tools:text="Reading" />
 
     <TextView
-        android:id="@+id/streak_btn"
+        android:id="@+id/streak_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingHorizontal="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/habit_description"
-        app:layout_constraintEnd_toStartOf="@+id/check_done_btn"
         app:layout_constraintStart_toEndOf="@+id/habit_description"
         app:layout_constraintTop_toTopOf="@+id/habit_description"
         tools:text="256" />
 
     <Button
         android:id="@+id/check_done_btn"
+        style="@style/Widget.Material3.Button.IconButton.Outlined"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
         android:text="@string/check_done"
         app:layout_constraintBottom_toBottomOf="@+id/habit_description"
         app:layout_constraintEnd_toStartOf="@+id/delete_btn"
@@ -37,10 +38,13 @@
 
     <Button
         android:id="@+id/delete_btn"
+        style="@style/Widget.Material3.Button.Icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:icon="@drawable/ic_delete"
+        android:drawableTint="?colorOnSurfaceInverse"
         android:text="@string/delete"
-        app:layout_constraintBottom_toBottomOf="@+id/check_done_btn"
+        app:layout_constraintBottom_toBottomOf="@+id/habit_description"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/check_done_btn" />
+        app:layout_constraintTop_toTopOf="@+id/habit_description" />
 </androidx.constraintlayout.widget.ConstraintLayout>

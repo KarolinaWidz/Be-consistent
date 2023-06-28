@@ -8,4 +8,6 @@
     <string name="cancel">Cancel</string>
     <string name="successfully_added">Successfully added new habit</string>
     <string name="operation_unsuccessful">Operation unsuccessful</string>
+    <string name="habit">Habit</string>
+    <string name="streak">Streak</string>
 </resources>

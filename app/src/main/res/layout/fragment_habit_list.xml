@@ -7,6 +7,26 @@
     android:layout_margin="8dp"
     tools:context=".ui.HabitListFragment">
 
+    <TextView
+        android:id="@+id/habit_text"
+        style="@style/TextAppearance.Material3.ActionBar.Subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/habit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        style="@style/TextAppearance.Material3.ActionBar.Subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="125dp"
+        android:text="@string/streak"
+        app:layout_constraintBottom_toBottomOf="@+id/habit_text"
+        app:layout_constraintTop_toTopOf="@+id/habit_text" />
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_habit"
         android:layout_width="wrap_content"
@@ -22,12 +42,22 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginBottom="668dp"
+        android:scrollbars="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider"
+        tools:listitem="@layout/habit_item" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/habit_text" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
