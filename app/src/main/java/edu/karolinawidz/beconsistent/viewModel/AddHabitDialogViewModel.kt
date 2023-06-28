@@ -5,11 +5,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import edu.karolinawidz.beconsistent.database.HabitDao
 import edu.karolinawidz.beconsistent.database.HabitEntity
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class AddHabitDialogViewModel(private val dao: HabitDao) : ViewModel() {
+class AddHabitDialogViewModel(private val dao: HabitDao, private val dispatcher: CoroutineDispatcher = Dispatchers.IO) : ViewModel() {
     private fun insertHabit(habit: HabitEntity) {
-        viewModelScope.launch {
+        viewModelScope.launch(dispatcher) {
             dao.insert(habit)
         }
     }

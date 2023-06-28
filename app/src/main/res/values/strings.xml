@@ -6,4 +6,6 @@
     <string name="add_habit">Add new habit</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
+    <string name="successfully_added">Successfully added new habit</string>
+    <string name="operation_unsuccessful">Operation unsuccessful</string>
 </resources>
