@@ -4,14 +4,19 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
+import androidx.lifecycle.viewModelScope
 import edu.karolinawidz.beconsistent.database.Habit
 import edu.karolinawidz.beconsistent.database.HabitDao
+import kotlinx.coroutines.launch
 
 
-class HabitViewModel(dao: HabitDao) : ViewModel() {
+class HabitViewModel(private val dao: HabitDao) : ViewModel() {
 
     val allHabits: LiveData<List<Habit>> = dao.getAll().asLiveData()
 
+    fun deleteHabit(habit: Habit) {
+        viewModelScope.launch { dao.delete(habit) }
+    }
 }
 
 class HabitViewModelFactory(private val dao: HabitDao) : ViewModelProvider.Factory {

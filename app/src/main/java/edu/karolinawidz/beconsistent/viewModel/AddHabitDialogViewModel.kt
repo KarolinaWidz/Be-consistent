@@ -3,8 +3,8 @@ package edu.karolinawidz.beconsistent.viewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import edu.karolinawidz.beconsistent.database.HabitDao
 import edu.karolinawidz.beconsistent.database.Habit
+import edu.karolinawidz.beconsistent.database.HabitDao
 import kotlinx.coroutines.launch
 
 class AddHabitDialogViewModel(private val dao: HabitDao) : ViewModel() {

@@ -8,7 +8,7 @@
 
     <TextView
         android:id="@+id/habit_description"
-        android:layout_width="125dp"
+        android:layout_width="100dp"
         android:padding="8dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -22,6 +22,7 @@
         android:layout_height="wrap_content"
         android:paddingHorizontal="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/habit_description"
+
         app:layout_constraintStart_toEndOf="@+id/habit_description"
         app:layout_constraintTop_toTopOf="@+id/habit_description"
         tools:text="256" />

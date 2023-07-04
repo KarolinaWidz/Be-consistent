@@ -27,7 +27,6 @@ class HabitListFragment : Fragment(R.layout.fragment_habit_list) {
         _binding = FragmentHabitListBinding.bind(view)
         initList()
         binding.addHabit.setOnClickListener { showAddHabitDialog() }
-
     }
 
     private fun initList() {
@@ -37,6 +36,7 @@ class HabitListFragment : Fragment(R.layout.fragment_habit_list) {
         viewModel.allHabits.observe(viewLifecycleOwner) { habits ->
             habits.let { adapter.submitList(it) }
         }
+        adapter.deleteItemClickListener = { habit -> viewModel.deleteHabit(habit) }
     }
 
     private fun showAddHabitDialog() {

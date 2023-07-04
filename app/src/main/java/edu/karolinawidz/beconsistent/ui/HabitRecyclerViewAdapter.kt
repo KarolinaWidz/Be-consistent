@@ -12,14 +12,13 @@ import edu.karolinawidz.beconsistent.databinding.HabitItemBinding
 class HabitRecyclerViewAdapter :
     ListAdapter<Habit, HabitRecyclerViewAdapter.HabitViewHolder>(DiffCallback) {
 
-    class HabitViewHolder(private var binding: HabitItemBinding) :
+    lateinit var deleteItemClickListener: (habit: Habit) -> Unit
+
+    class HabitViewHolder(binding: HabitItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(habit: Habit) {
-            binding.apply {
-                habitDescription.text = habit.text
-                streakTextview.text = habit.streak.toString()
-            }
-        }
+        val habitDescription = binding.habitDescription
+        val streakTextview = binding.streakTextview
+        val deleteBtn = binding.deleteBtn
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HabitViewHolder {
@@ -34,7 +33,11 @@ class HabitRecyclerViewAdapter :
 
     override fun onBindViewHolder(holder: HabitViewHolder, position: Int) {
         val currentHabit = getItem(position)
-        holder.bind(currentHabit)
+        holder.run {
+            habitDescription.text = currentHabit.text
+            streakTextview.text = currentHabit.streak.toString()
+            deleteBtn.setOnClickListener { deleteItemClickListener(currentHabit) }
+        }
     }
 
 }
