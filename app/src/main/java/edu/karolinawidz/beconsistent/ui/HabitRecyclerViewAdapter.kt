@@ -54,5 +54,4 @@ object DiffCallback : DiffUtil.ItemCallback<Habit>() {
     override fun areContentsTheSame(oldItem: Habit, newItem: Habit): Boolean {
         return oldItem.text == newItem.text && oldItem.streak == newItem.streak
     }
-
 }

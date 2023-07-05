@@ -2,11 +2,12 @@ package edu.karolinawidz.beconsistent.database
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.time.LocalDate
 
 @Entity(tableName = "habit")
 data class Habit(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val text: String,
-    var streak: Int = 0
-//    val lastUpdate: Date
+    val streak: Int = 0,
+    val lastUpdate: LocalDate
 )

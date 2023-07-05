@@ -4,8 +4,11 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
+import edu.karolinawidz.beconsistent.database.util.DateConverter
 
-@Database(entities = [Habit::class], version = 1)
+@Database(entities = [Habit::class], version = 3)
+@TypeConverters(DateConverter::class)
 abstract class HabitDatabase : RoomDatabase() {
     abstract fun dao(): HabitDao
 
@@ -19,7 +22,7 @@ abstract class HabitDatabase : RoomDatabase() {
                     context.applicationContext,
                     HabitDatabase::class.java,
                     "habit_database"
-                ).build()
+                ).fallbackToDestructiveMigration().build()
                 INSTANCE = instance
                 return instance
             }

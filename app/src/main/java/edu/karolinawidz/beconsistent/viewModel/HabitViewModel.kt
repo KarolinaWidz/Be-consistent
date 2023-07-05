@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import edu.karolinawidz.beconsistent.database.Habit
 import edu.karolinawidz.beconsistent.database.HabitDao
 import kotlinx.coroutines.launch
+import java.time.LocalDate
 
 
 class HabitViewModel(private val dao: HabitDao) : ViewModel() {
@@ -18,10 +19,14 @@ class HabitViewModel(private val dao: HabitDao) : ViewModel() {
         viewModelScope.launch { dao.delete(habit) }
     }
 
-    fun checkDoneHabit(habit: Habit){
-        val updatedHabit = habit.copy(streak = habit.streak+1)
-        viewModelScope.launch { dao.update(updatedHabit) }
+    fun checkDoneHabit(habit: Habit) {
+        if (!isHabitCheckDoneToday(habit)) {
+            val updatedHabit = habit.copy(streak = habit.streak + 1, lastUpdate = LocalDate.now())
+            viewModelScope.launch { dao.update(updatedHabit) }
+        }
     }
+
+    private fun isHabitCheckDoneToday(habit: Habit) = habit.lastUpdate.isEqual(LocalDate.now())
 }
 
 class HabitViewModelFactory(private val dao: HabitDao) : ViewModelProvider.Factory {
