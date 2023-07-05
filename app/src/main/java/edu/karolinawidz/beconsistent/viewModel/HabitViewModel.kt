@@ -17,6 +17,11 @@ class HabitViewModel(private val dao: HabitDao) : ViewModel() {
     fun deleteHabit(habit: Habit) {
         viewModelScope.launch { dao.delete(habit) }
     }
+
+    fun checkDoneHabit(habit: Habit){
+        val updatedHabit = habit.copy(streak = habit.streak+1)
+        viewModelScope.launch { dao.update(updatedHabit) }
+    }
 }
 
 class HabitViewModelFactory(private val dao: HabitDao) : ViewModelProvider.Factory {

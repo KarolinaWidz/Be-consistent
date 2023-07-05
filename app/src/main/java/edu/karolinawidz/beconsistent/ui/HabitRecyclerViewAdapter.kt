@@ -13,12 +13,14 @@ class HabitRecyclerViewAdapter :
     ListAdapter<Habit, HabitRecyclerViewAdapter.HabitViewHolder>(DiffCallback) {
 
     lateinit var deleteItemClickListener: (habit: Habit) -> Unit
+    lateinit var checkDoneItemClickListener: (habit: Habit) -> Unit
 
     class HabitViewHolder(binding: HabitItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         val habitDescription = binding.habitDescription
         val streakTextview = binding.streakTextview
         val deleteBtn = binding.deleteBtn
+        val checkDoneBtn = binding.checkDoneBtn
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HabitViewHolder {
@@ -37,9 +39,11 @@ class HabitRecyclerViewAdapter :
             habitDescription.text = currentHabit.text
             streakTextview.text = currentHabit.streak.toString()
             deleteBtn.setOnClickListener { deleteItemClickListener(currentHabit) }
+            checkDoneBtn.setOnClickListener {
+                checkDoneItemClickListener(currentHabit)
+            }
         }
     }
-
 }
 
 object DiffCallback : DiffUtil.ItemCallback<Habit>() {
@@ -48,7 +52,7 @@ object DiffCallback : DiffUtil.ItemCallback<Habit>() {
     }
 
     override fun areContentsTheSame(oldItem: Habit, newItem: Habit): Boolean {
-        return oldItem.text == newItem.text
+        return oldItem.text == newItem.text && oldItem.streak == newItem.streak
     }
 
 }
