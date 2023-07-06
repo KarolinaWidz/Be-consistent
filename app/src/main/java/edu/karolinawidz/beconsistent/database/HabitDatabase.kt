@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import edu.karolinawidz.beconsistent.database.util.DateConverter
 
-@Database(entities = [Habit::class], version = 3)
+@Database(entities = [Habit::class], version = 4)
 @TypeConverters(DateConverter::class)
 abstract class HabitDatabase : RoomDatabase() {
     abstract fun dao(): HabitDao

@@ -1,10 +1,10 @@
 package edu.karolinawidz.beconsistent.ui
 
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.RecyclerView
 import edu.karolinawidz.beconsistent.database.Habit
 import edu.karolinawidz.beconsistent.databinding.HabitItemBinding
 
@@ -15,8 +15,7 @@ class HabitRecyclerViewAdapter :
     lateinit var deleteItemClickListener: (habit: Habit) -> Unit
     lateinit var checkDoneItemClickListener: (habit: Habit) -> Unit
 
-    class HabitViewHolder(binding: HabitItemBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+    class HabitViewHolder(binding: HabitItemBinding) : RecyclerView.ViewHolder(binding.root) {
         val habitDescription = binding.habitDescription
         val streakTextview = binding.streakTextview
         val deleteBtn = binding.deleteBtn
@@ -52,6 +51,7 @@ object DiffCallback : DiffUtil.ItemCallback<Habit>() {
     }
 
     override fun areContentsTheSame(oldItem: Habit, newItem: Habit): Boolean {
-        return oldItem.text == newItem.text && oldItem.streak == newItem.streak
+        return oldItem.id == newItem.id && oldItem.text == newItem.text && oldItem.streak == newItem.streak
+                && oldItem.lastUpdate == newItem.lastUpdate
     }
 }

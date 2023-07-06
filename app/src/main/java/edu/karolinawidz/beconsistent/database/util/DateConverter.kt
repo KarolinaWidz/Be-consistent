@@ -6,12 +6,12 @@ import java.time.LocalDate
 class DateConverter {
 
     @TypeConverter
-    fun dateFromTimestamp(value: String?): LocalDate? {
+    fun dateFromString(value: String?): LocalDate? {
         return value?.let { LocalDate.parse(it) }
     }
 
     @TypeConverter
-    fun dateToTimestamp(date: LocalDate?): String? {
+    fun dateToString(date: LocalDate?): String? {
         return date?.toString()
     }
 }

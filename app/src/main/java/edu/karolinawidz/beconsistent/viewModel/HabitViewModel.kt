@@ -20,13 +20,13 @@ class HabitViewModel(private val dao: HabitDao) : ViewModel() {
     }
 
     fun checkDoneHabit(habit: Habit) {
-        if (!isHabitCheckDoneToday(habit)) {
+        if (!isHabitAlreadyChecked(habit)) {
             val updatedHabit = habit.copy(streak = habit.streak + 1, lastUpdate = LocalDate.now())
             viewModelScope.launch { dao.update(updatedHabit) }
         }
     }
 
-    private fun isHabitCheckDoneToday(habit: Habit) = habit.lastUpdate.isEqual(LocalDate.now())
+    private fun isHabitAlreadyChecked(habit: Habit) = habit.lastUpdate.isEqual(LocalDate.now())
 }
 
 class HabitViewModelFactory(private val dao: HabitDao) : ViewModelProvider.Factory {

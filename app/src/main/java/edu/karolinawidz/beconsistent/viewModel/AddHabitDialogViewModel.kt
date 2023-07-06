@@ -6,7 +6,6 @@ import androidx.lifecycle.viewModelScope
 import edu.karolinawidz.beconsistent.database.Habit
 import edu.karolinawidz.beconsistent.database.HabitDao
 import kotlinx.coroutines.launch
-import java.time.LocalDate
 
 class AddHabitDialogViewModel(private val dao: HabitDao) : ViewModel() {
     private fun insertHabit(habit: Habit) {
@@ -16,7 +15,7 @@ class AddHabitDialogViewModel(private val dao: HabitDao) : ViewModel() {
     }
 
     fun addNewHabit(habitText: String) {
-        val newHabit = Habit(text = habitText, lastUpdate = LocalDate.now())
+        val newHabit = Habit(text = habitText)
         insertHabit(newHabit)
     }
 }
