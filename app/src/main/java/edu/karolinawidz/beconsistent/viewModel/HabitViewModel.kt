@@ -2,16 +2,17 @@ package edu.karolinawidz.beconsistent.viewModel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
 import edu.karolinawidz.beconsistent.database.Habit
 import edu.karolinawidz.beconsistent.database.HabitDao
 import kotlinx.coroutines.launch
 import java.time.LocalDate
+import javax.inject.Inject
 
-
-class HabitViewModel(private val dao: HabitDao) : ViewModel() {
+@HiltViewModel
+class HabitViewModel @Inject constructor(private val dao: HabitDao) : ViewModel() {
 
     val allHabits: LiveData<List<Habit>> = dao.getAll().asLiveData()
 
@@ -27,14 +28,4 @@ class HabitViewModel(private val dao: HabitDao) : ViewModel() {
     }
 
     private fun isHabitAlreadyChecked(habit: Habit) = habit.lastUpdate.isEqual(LocalDate.now())
-}
-
-class HabitViewModelFactory(private val dao: HabitDao) : ViewModelProvider.Factory {
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(HabitViewModel::class.java)) {
-            @Suppress("UNCHECKED_CAST")
-            return HabitViewModel(dao) as T
-        }
-        throw IllegalArgumentException("Unknown ViewModel")
-    }
 }

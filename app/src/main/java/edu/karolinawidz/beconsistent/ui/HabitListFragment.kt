@@ -6,12 +6,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.SimpleItemAnimator
-import edu.karolinawidz.beconsistent.BeConsistentApplication
+import dagger.hilt.android.AndroidEntryPoint
 import edu.karolinawidz.beconsistent.R
 import edu.karolinawidz.beconsistent.databinding.FragmentHabitListBinding
 import edu.karolinawidz.beconsistent.viewModel.HabitViewModel
-import edu.karolinawidz.beconsistent.viewModel.HabitViewModelFactory
 
+@AndroidEntryPoint
 class HabitListFragment : Fragment(R.layout.fragment_habit_list) {
     companion object {
         const val TAG = "HabitListFragment"
@@ -19,9 +19,9 @@ class HabitListFragment : Fragment(R.layout.fragment_habit_list) {
 
     private var _binding: FragmentHabitListBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: HabitViewModel by viewModels {
-        HabitViewModelFactory((activity?.application as BeConsistentApplication).database.dao())
-    }
+    private lateinit var adapter: HabitRecyclerViewAdapter
+    private val viewModel: HabitViewModel by viewModels()
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -31,14 +31,12 @@ class HabitListFragment : Fragment(R.layout.fragment_habit_list) {
     }
 
     private fun initList() {
-        val adapter = HabitRecyclerViewAdapter()
+        adapter = HabitRecyclerViewAdapter()
         val animator = binding.recyclerView.itemAnimator as SimpleItemAnimator
         animator.supportsChangeAnimations = false
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = LinearLayoutManager(this.context)
-        viewModel.allHabits.observe(viewLifecycleOwner) { habits ->
-            habits.let { adapter.submitList(it) }
-        }
+        viewModel.allHabits.observe(viewLifecycleOwner) { adapter.submitList(it) }
         adapter.deleteItemClickListener = { habit -> viewModel.deleteHabit(habit) }
         adapter.checkDoneItemClickListener = { habit -> viewModel.checkDoneHabit(habit) }
     }
