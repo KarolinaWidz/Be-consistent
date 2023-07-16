@@ -5,6 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import edu.karolinawidz.beconsistent.database.model.Habit
 import edu.karolinawidz.beconsistent.database.util.DateConverter
 
 @Database(entities = [Habit::class], version = 4)

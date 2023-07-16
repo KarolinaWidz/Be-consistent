@@ -1,15 +1,18 @@
-package edu.karolinawidz.beconsistent.ui
+package edu.karolinawidz.beconsistent.ui.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import edu.karolinawidz.beconsistent.database.Habit
+import edu.karolinawidz.beconsistent.R
+import edu.karolinawidz.beconsistent.database.model.Habit
 import edu.karolinawidz.beconsistent.databinding.HabitItemBinding
 
 
-class HabitRecyclerViewAdapter :
+class HabitRecyclerViewAdapter(private val context: Context) :
     ListAdapter<Habit, HabitRecyclerViewAdapter.HabitViewHolder>(DiffCallback) {
 
     lateinit var deleteItemClickListener: (habit: Habit) -> Unit
@@ -20,6 +23,7 @@ class HabitRecyclerViewAdapter :
         val streakTextview = binding.streakTextview
         val deleteBtn = binding.deleteBtn
         val checkDoneBtn = binding.checkDoneBtn
+        val habitDoneImg = binding.habitDone
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HabitViewHolder {
@@ -37,11 +41,27 @@ class HabitRecyclerViewAdapter :
         holder.run {
             habitDescription.text = currentHabit.text
             streakTextview.text = currentHabit.streak.toString()
-            deleteBtn.setOnClickListener { deleteItemClickListener(currentHabit) }
+
+            deleteBtn.setOnClickListener {
+                delete(holder)
+                deleteItemClickListener(currentHabit)
+            }
+
             checkDoneBtn.setOnClickListener {
+                checkDone(holder)
                 checkDoneItemClickListener(currentHabit)
             }
         }
+    }
+
+    private fun checkDone(item: HabitViewHolder) {
+        item.checkDoneBtn.text = context.getText(R.string.done)
+        item.habitDoneImg.visibility = View.VISIBLE
+    }
+
+    private fun delete(item: HabitViewHolder) {
+        item.checkDoneBtn.text = context.getText(R.string.check)
+        item.habitDoneImg.visibility = View.INVISIBLE
     }
 }
 

@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">Be consistent</string>
     <string name="delete">Delete</string>
-    <string name="check_done">Check done</string>
+    <string name="done">Done</string>
+    <string name="check">Check</string>
     <string name="habit_description">description</string>
     <string name="add_habit">Add new habit</string>
     <string name="ok">OK</string>
@@ -10,4 +11,5 @@
     <string name="operation_unsuccessful">Operation unsuccessful</string>
     <string name="habit">Habit</string>
     <string name="streak">Streak</string>
+    <string name="habit_marked_as_done">Habit marked as done</string>
 </resources>

@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import edu.karolinawidz.beconsistent.database.Habit
+import edu.karolinawidz.beconsistent.database.model.Habit
 import edu.karolinawidz.beconsistent.database.HabitDao
 import kotlinx.coroutines.launch
 import java.time.LocalDate

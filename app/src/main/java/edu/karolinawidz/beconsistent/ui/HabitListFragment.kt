@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.SimpleItemAnimator
 import dagger.hilt.android.AndroidEntryPoint
 import edu.karolinawidz.beconsistent.R
 import edu.karolinawidz.beconsistent.databinding.FragmentHabitListBinding
+import edu.karolinawidz.beconsistent.ui.adapter.HabitRecyclerViewAdapter
 import edu.karolinawidz.beconsistent.viewModel.HabitViewModel
 
 @AndroidEntryPoint
@@ -31,7 +32,7 @@ class HabitListFragment : Fragment(R.layout.fragment_habit_list) {
     }
 
     private fun initList() {
-        adapter = HabitRecyclerViewAdapter()
+        adapter = HabitRecyclerViewAdapter(requireContext())
         val animator = binding.recyclerView.itemAnimator as SimpleItemAnimator
         animator.supportsChangeAnimations = false
         binding.recyclerView.adapter = adapter

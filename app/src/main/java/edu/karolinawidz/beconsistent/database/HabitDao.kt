@@ -5,6 +5,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
+import edu.karolinawidz.beconsistent.database.model.Habit
 import kotlinx.coroutines.flow.Flow
 
 @Dao
