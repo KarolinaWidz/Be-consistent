@@ -40,6 +40,7 @@ class HabitListFragment : Fragment(R.layout.fragment_habit_list) {
         viewModel.allHabits.observe(viewLifecycleOwner) { adapter.submitList(it) }
         adapter.deleteItemClickListener = { habit -> viewModel.deleteHabit(habit) }
         adapter.checkDoneItemClickListener = { habit -> viewModel.checkDoneHabit(habit) }
+        adapter.isHabitChecked = { habit -> viewModel.isHabitAlreadyChecked(habit) }
     }
 
     private fun showAddHabitDialog() {

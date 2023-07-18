@@ -27,5 +27,5 @@ class HabitViewModel @Inject constructor(private val dao: HabitDao) : ViewModel(
         }
     }
 
-    private fun isHabitAlreadyChecked(habit: Habit) = habit.lastUpdate.isEqual(LocalDate.now())
+    fun isHabitAlreadyChecked(habit: Habit) = habit.lastUpdate.isEqual(LocalDate.now())
 }
