@@ -18,6 +18,7 @@ class HabitRecyclerViewAdapter(private val context: Context) :
     lateinit var deleteItemClickListener: (habit: Habit) -> Unit
     lateinit var checkDoneItemClickListener: (habit: Habit) -> Unit
     lateinit var isHabitChecked: (habit: Habit) -> Boolean
+    lateinit var clearBrokenStreak: (habit: Habit) -> Unit
 
     class HabitViewHolder(binding: HabitItemBinding) : RecyclerView.ViewHolder(binding.root) {
         val habitDescription = binding.habitDescription
@@ -39,16 +40,16 @@ class HabitRecyclerViewAdapter(private val context: Context) :
 
     override fun onBindViewHolder(holder: HabitViewHolder, position: Int) {
         val currentHabit = getItem(position)
+        clearBrokenStreak(currentHabit)
+
         holder.run {
             habitDescription.text = currentHabit.text
             streakTextview.text = currentHabit.streak.toString()
 
             if (isHabitChecked(currentHabit)) {
-                habitDoneImg.visibility = View.VISIBLE
-                checkDoneBtn.text = context.getText(R.string.done)
+                checkDone(holder)
             } else {
-                habitDoneImg.visibility = View.INVISIBLE
-                checkDoneBtn.text = context.getText(R.string.check)
+                undoneHabit(holder)
             }
 
             deleteBtn.setOnClickListener { deleteItemClickListener(currentHabit) }
@@ -62,6 +63,11 @@ class HabitRecyclerViewAdapter(private val context: Context) :
     private fun checkDone(item: HabitViewHolder) {
         item.checkDoneBtn.text = context.getText(R.string.done)
         item.habitDoneImg.visibility = View.VISIBLE
+    }
+
+    private fun undoneHabit(item: HabitViewHolder) {
+        item.checkDoneBtn.text = context.getText(R.string.check)
+        item.habitDoneImg.visibility = View.INVISIBLE
     }
 }
 

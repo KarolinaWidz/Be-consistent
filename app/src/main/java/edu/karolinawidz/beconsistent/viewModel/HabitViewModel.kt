@@ -13,7 +13,6 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HabitViewModel @Inject constructor(private val dao: HabitDao) : ViewModel() {
-
     val allHabits: LiveData<List<Habit>> = dao.getAll().asLiveData()
 
     fun deleteHabit(habit: Habit) {
@@ -27,5 +26,19 @@ class HabitViewModel @Inject constructor(private val dao: HabitDao) : ViewModel(
         }
     }
 
+    fun clearAllBrokenStreaks() = allHabits.value?.forEach { clearBrokenStreak(it) }
+
+    fun clearBrokenStreak(habit: Habit) {
+        if (isStreakBroken(habit)) {
+            val updatedHabit = habit.copy(streak = 0, lastUpdate = LocalDate.MIN)
+            viewModelScope.launch { dao.update(updatedHabit) }
+        }
+    }
+
     fun isHabitAlreadyChecked(habit: Habit) = habit.lastUpdate.isEqual(LocalDate.now())
+
+    private fun isStreakBroken(habit: Habit) =
+        !habit.lastUpdate.isEqual(LocalDate.MIN) && habit.lastUpdate.isBefore(
+            LocalDate.now().minusDays(1)
+        )
 }
