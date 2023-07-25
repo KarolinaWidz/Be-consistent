@@ -45,17 +45,16 @@ class HabitRecyclerViewAdapter(private val context: Context) :
         holder.run {
             habitDescription.text = currentHabit.text
             streakTextview.text = currentHabit.streak.toString()
+            deleteBtn.setOnClickListener { deleteItemClickListener(currentHabit) }
+            checkDoneBtn.setOnClickListener {
+                checkDone(holder)
+                checkDoneItemClickListener(currentHabit)
+            }
 
             if (isHabitChecked(currentHabit)) {
                 checkDone(holder)
             } else {
                 undoneHabit(holder)
-            }
-
-            deleteBtn.setOnClickListener { deleteItemClickListener(currentHabit) }
-            checkDoneBtn.setOnClickListener {
-                checkDone(holder)
-                checkDoneItemClickListener(currentHabit)
             }
         }
     }
@@ -77,7 +76,6 @@ object DiffCallback : DiffUtil.ItemCallback<Habit>() {
     }
 
     override fun areContentsTheSame(oldItem: Habit, newItem: Habit): Boolean {
-        return oldItem.id == newItem.id && oldItem.text == newItem.text && oldItem.streak == newItem.streak
-                && oldItem.lastUpdate == newItem.lastUpdate
+        return oldItem == newItem
     }
 }

@@ -1,5 +1,6 @@
 package edu.karolinawidz.beconsistent.ui
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
@@ -11,8 +12,8 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.SimpleItemAnimator
 import dagger.hilt.android.AndroidEntryPoint
-import edu.karolinawidz.beconsistent.DateChangedReceiver
 import edu.karolinawidz.beconsistent.R
+import edu.karolinawidz.beconsistent.broadcastReceiver.DateChangedReceiver
 import edu.karolinawidz.beconsistent.databinding.FragmentHabitListBinding
 import edu.karolinawidz.beconsistent.ui.adapter.HabitRecyclerViewAdapter
 import edu.karolinawidz.beconsistent.viewModel.HabitViewModel
@@ -25,10 +26,11 @@ class HabitListFragment : Fragment(R.layout.fragment_habit_list) {
 
     private var _binding: FragmentHabitListBinding? = null
     private val binding get() = _binding!!
-    private lateinit var adapter: HabitRecyclerViewAdapter
     private val viewModel: HabitViewModel by viewModels()
     private lateinit var dateChangedReceiver: DateChangedReceiver
+    private lateinit var adapter: HabitRecyclerViewAdapter
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onStart() {
         super.onStart()
         dateChangedReceiver = DateChangedReceiver()
@@ -36,6 +38,7 @@ class HabitListFragment : Fragment(R.layout.fragment_habit_list) {
             registerReceiver(requireContext(), dateChangedReceiver, it, RECEIVER_NOT_EXPORTED)
         }
         dateChangedReceiver.dateChangedAction = { viewModel.clearAllBrokenStreaks() }
+        dateChangedReceiver.actualizeIcons = { adapter.notifyDataSetChanged() }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
