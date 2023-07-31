@@ -44,6 +44,7 @@ class HabitDetailsFragment : Fragment(R.layout.fragment_habit_details) {
     private fun bind(habit: Habit) {
         binding.habitText.text = habit.text
         binding.streakValue.text = habit.streak.toString()
+        binding.maxStreakValue.text = habit.maxStreak.toString()
         binding.deleteBtn.setOnClickListener { deleteHabit(habit) }
     }
 

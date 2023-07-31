@@ -72,7 +72,7 @@ class HabitListFragment : Fragment(R.layout.fragment_habit_list) {
         adapter.clearBrokenStreak = { viewModel.clearBrokenStreak(it) }
     }
 
-    fun showAddHabitDialog() {
+    private fun showAddHabitDialog() {
         findNavController().navigate(R.id.addHabitDialogFragment)
     }
 

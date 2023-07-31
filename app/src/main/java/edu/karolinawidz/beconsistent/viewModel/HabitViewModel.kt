@@ -10,6 +10,7 @@ import edu.karolinawidz.beconsistent.database.HabitDao
 import kotlinx.coroutines.launch
 import java.time.LocalDate
 import javax.inject.Inject
+import kotlin.math.max
 
 @HiltViewModel
 class HabitViewModel @Inject constructor(private val dao: HabitDao) : ViewModel() {
@@ -17,7 +18,11 @@ class HabitViewModel @Inject constructor(private val dao: HabitDao) : ViewModel(
 
     fun checkDoneHabit(habit: Habit) {
         if (!isHabitAlreadyChecked(habit)) {
-            val updatedHabit = habit.copy(streak = habit.streak + 1, lastUpdate = LocalDate.now())
+            val updatedHabit = habit.copy(
+                streak = habit.streak + 1,
+                lastUpdate = LocalDate.now(),
+                maxStreak = max(habit.maxStreak, habit.streak + 1)
+            )
             viewModelScope.launch { dao.update(updatedHabit) }
         }
     }
