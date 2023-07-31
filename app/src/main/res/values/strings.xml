@@ -12,4 +12,9 @@
     <string name="habit">Habit</string>
     <string name="streak">Streak</string>
     <string name="habit_marked_as_done">Habit marked as done</string>
+    <string name="habit_done">Congratulations! %1$s is done!</string>
+    <string name="go_to_habit_info">Go to habit info</string>
+    <string name="edit">Edit</string>
+    <string name="max_streak">Max Streak</string>
+    <string name="visualization_of_the_streak">Visualization of the streak</string>
 </resources>

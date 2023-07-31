@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/habitListFragment">
+
+    <fragment
+        android:id="@+id/habitListFragment"
+        android:name="edu.karolinawidz.beconsistent.ui.HabitListFragment"
+        android:label="fragment_habit_list"
+        tools:layout="@layout/fragment_habit_list" >
+        <action
+            android:id="@+id/action_habitListFragment_to_addHabitDialogFragment"
+            app:destination="@id/addHabitDialogFragment" />
+        <action
+            android:id="@+id/action_habitListFragment_to_habitDetails"
+            app:destination="@id/habitDetailsFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/addHabitDialogFragment"
+        android:name="edu.karolinawidz.beconsistent.ui.AddHabitDialogFragment"
+        android:label="fragment_add_habit_dialog"
+        tools:layout="@layout/fragment_add_habit_dialog" />
+    <fragment
+        android:id="@+id/habitDetailsFragment"
+        android:name="edu.karolinawidz.beconsistent.ui.HabitDetailsFragment"
+        android:label="fragment_habit_details"
+        tools:layout="@layout/fragment_habit_details" >
+        <argument
+            android:name="habitId"
+            app:argType="integer" />
+    </fragment>
+</navigation>

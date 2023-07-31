@@ -15,10 +15,6 @@ import javax.inject.Inject
 class HabitViewModel @Inject constructor(private val dao: HabitDao) : ViewModel() {
     val allHabits: LiveData<List<Habit>> = dao.getAll().asLiveData()
 
-    fun deleteHabit(habit: Habit) {
-        viewModelScope.launch { dao.delete(habit) }
-    }
-
     fun checkDoneHabit(habit: Habit) {
         if (!isHabitAlreadyChecked(habit)) {
             val updatedHabit = habit.copy(streak = habit.streak + 1, lastUpdate = LocalDate.now())

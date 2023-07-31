@@ -8,7 +8,7 @@
 
     <TextView
         android:id="@+id/habit_description"
-        android:layout_width="100dp"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:padding="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -46,18 +46,8 @@
         android:layout_height="wrap_content"
         android:text="@string/check"
         app:layout_constraintBottom_toBottomOf="@+id/habit_description"
-        app:layout_constraintEnd_toStartOf="@+id/delete_btn"
-        app:layout_constraintTop_toTopOf="@+id/habit_description" />
-
-    <Button
-        android:id="@+id/delete_btn"
-        style="@style/Widget.Material3.Button.Icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:drawableTint="?colorOnSurfaceInverse"
-        android:text="@string/delete"
-        app:icon="@drawable/ic_delete"
-        app:layout_constraintBottom_toBottomOf="@+id/habit_description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/habit_description" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,15 +15,14 @@ import edu.karolinawidz.beconsistent.databinding.HabitItemBinding
 class HabitRecyclerViewAdapter(private val context: Context) :
     ListAdapter<Habit, HabitRecyclerViewAdapter.HabitViewHolder>(DiffCallback) {
 
-    lateinit var deleteItemClickListener: (habit: Habit) -> Unit
     lateinit var checkDoneItemClickListener: (habit: Habit) -> Unit
     lateinit var isHabitChecked: (habit: Habit) -> Boolean
     lateinit var clearBrokenStreak: (habit: Habit) -> Unit
+    lateinit var detailsItemClickListener:(habit:Habit) -> Unit
 
-    class HabitViewHolder(binding: HabitItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class HabitViewHolder(binding: HabitItemBinding) : RecyclerView.ViewHolder(binding.root) {
         val habitDescription = binding.habitDescription
         val streakTextview = binding.streakTextview
-        val deleteBtn = binding.deleteBtn
         val checkDoneBtn = binding.checkDoneBtn
         val habitDoneImg = binding.habitDone
     }
@@ -41,11 +40,11 @@ class HabitRecyclerViewAdapter(private val context: Context) :
     override fun onBindViewHolder(holder: HabitViewHolder, position: Int) {
         val currentHabit = getItem(position)
         clearBrokenStreak(currentHabit)
-
         holder.run {
+            itemView.setOnClickListener{detailsItemClickListener(currentHabit)}
             habitDescription.text = currentHabit.text
             streakTextview.text = currentHabit.streak.toString()
-            deleteBtn.setOnClickListener { deleteItemClickListener(currentHabit) }
+
             checkDoneBtn.setOnClickListener {
                 checkDone(holder)
                 checkDoneItemClickListener(currentHabit)
@@ -62,11 +61,13 @@ class HabitRecyclerViewAdapter(private val context: Context) :
     private fun checkDone(item: HabitViewHolder) {
         item.checkDoneBtn.text = context.getText(R.string.done)
         item.habitDoneImg.visibility = View.VISIBLE
+        item.checkDoneBtn.isClickable = false
     }
 
     private fun undoneHabit(item: HabitViewHolder) {
         item.checkDoneBtn.text = context.getText(R.string.check)
         item.habitDoneImg.visibility = View.INVISIBLE
+        item.checkDoneBtn.isClickable = true
     }
 }
 
