@@ -1,4 +1,5 @@
 <resources>
+
     <style name="Base.Theme.BeConsistent" parent="Theme.Material3.Dark.NoActionBar">
         <item name="colorPrimary">@color/md_theme_dark_primary</item>
         <item name="colorOnPrimary">@color/md_theme_dark_onPrimary</item>
@@ -26,5 +27,10 @@
         <item name="colorOnSurfaceInverse">@color/md_theme_dark_inverseOnSurface</item>
         <item name="colorSurfaceInverse">@color/md_theme_dark_inverseSurface</item>
         <item name="colorPrimaryInverse">@color/md_theme_dark_inversePrimary</item>
+        <item name="colorOrange">#ffb870</item>
+        <item name="colorOnOrange">#4a2800</item>
+        <item name="colorOrangeContainer">#693c00</item>
+        <item name="colorOnOrangeContainer">#ffdcbe</item>
+        <item name="harmonizeOrange">false</item>
     </style>
 </resources>
