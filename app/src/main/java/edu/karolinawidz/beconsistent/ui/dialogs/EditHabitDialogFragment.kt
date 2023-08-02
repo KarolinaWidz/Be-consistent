@@ -1,4 +1,4 @@
-package edu.karolinawidz.beconsistent.ui
+package edu.karolinawidz.beconsistent.ui.dialogs
 
 import android.app.Dialog
 import android.os.Bundle
@@ -9,34 +9,47 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputLayout
 import dagger.hilt.android.AndroidEntryPoint
 import edu.karolinawidz.beconsistent.R
-import edu.karolinawidz.beconsistent.viewModel.AddHabitDialogViewModel
+import edu.karolinawidz.beconsistent.viewModel.EditHabitDialogViewModel
 
 @AndroidEntryPoint
-class AddHabitDialogFragment : DialogFragment() {
-    private val addHabitViewModel: AddHabitDialogViewModel by viewModels()
+class EditHabitDialogFragment : DialogFragment() {
+    companion object {
+        private const val HABIT_ID_KEY = "habitId"
+    }
+
+    private val editHabitViewModel: EditHabitDialogViewModel by viewModels()
+    private var habitId = 0
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.let {
+            habitId = it.getInt(HABIT_ID_KEY)
+        }
+    }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         dialog
         return activity?.let {
             val builder = MaterialAlertDialogBuilder(it).apply {
-                setTitle(R.string.add_habit)
+                setTitle(R.string.edit_habit)
                 setView(R.layout.fragment_add_habit_dialog)
-                setPositiveButton(R.string.ok) { _, _ -> addHabit() }
+                setPositiveButton(R.string.ok) { _, _ -> editHabit() }
                 setNegativeButton(R.string.cancel) { dialog, _ -> dialog.cancel() }
             }
             builder.create()
         } ?: throw IllegalStateException("Null activity")
     }
 
-    private fun addHabit() {
+    private fun editHabit() {
         val passedText =
             dialog?.findViewById<TextInputLayout>(R.id.new_habit_description)?.editText?.text
         if (passedText != null && passedText.toString().isNotBlank()) {
-            addHabitViewModel.addNewHabit(passedText.toString())
-            Toast.makeText(activity, R.string.successfully_added, Toast.LENGTH_SHORT).show()
+            editHabitViewModel.editHabit(habitId, passedText.toString())
+            Toast.makeText(activity, R.string.successfully_edited, Toast.LENGTH_SHORT).show()
         } else {
             Toast.makeText(activity, R.string.operation_unsuccessful, Toast.LENGTH_SHORT).show()
         }
 
     }
+
 }

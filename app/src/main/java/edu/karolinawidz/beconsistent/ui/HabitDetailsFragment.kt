@@ -14,6 +14,10 @@ import edu.karolinawidz.beconsistent.viewModel.HabitDetailsViewModel
 
 @AndroidEntryPoint
 class HabitDetailsFragment : Fragment(R.layout.fragment_habit_details) {
+    companion object {
+        private const val HABIT_ID_KEY = "habitId"
+    }
+
     private var _binding: FragmentHabitDetailsBinding? = null
     private val binding get() = _binding!!
     private val viewModel: HabitDetailsViewModel by viewModels()
@@ -23,7 +27,7 @@ class HabitDetailsFragment : Fragment(R.layout.fragment_habit_details) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            habitId = it.getInt("habitId")
+            habitId = it.getInt(HABIT_ID_KEY)
         }
     }
 
@@ -46,11 +50,20 @@ class HabitDetailsFragment : Fragment(R.layout.fragment_habit_details) {
         binding.streakValue.text = habit.streak.toString()
         binding.maxStreakValue.text = habit.maxStreak.toString()
         binding.deleteBtn.setOnClickListener { deleteHabit(habit) }
+        binding.editBtn.setOnClickListener{editHabit()}
     }
 
     private fun deleteHabit(habit: Habit) {
         viewModel.deleteHabit(habit)
         findNavController().navigate(R.id.habitListFragment)
+    }
+
+    private fun editHabit() {
+        findNavController().navigate(
+            HabitDetailsFragmentDirections.actionHabitDetailsFragmentToEditHabitDialogFragment(
+                habit.id
+            )
+        )
     }
 
 }

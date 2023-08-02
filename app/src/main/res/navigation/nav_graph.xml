@@ -19,7 +19,7 @@
     </fragment>
     <dialog
         android:id="@+id/addHabitDialogFragment"
-        android:name="edu.karolinawidz.beconsistent.ui.AddHabitDialogFragment"
+        android:name="edu.karolinawidz.beconsistent.ui.dialogs.AddHabitDialogFragment"
         android:label="fragment_add_habit_dialog"
         tools:layout="@layout/fragment_add_habit_dialog" />
     <fragment
@@ -30,5 +30,17 @@
         <argument
             android:name="habitId"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_habitDetailsFragment_to_editHabitDialogFragment"
+            app:destination="@id/editHabitDialogFragment" />
     </fragment>
+    <dialog
+        android:id="@+id/editHabitDialogFragment"
+        android:name="edu.karolinawidz.beconsistent.ui.dialogs.EditHabitDialogFragment"
+        android:label="fragment_edit_habit_dialog"
+        tools:layout="@layout/fragment_edit_habit_dialog" >
+        <argument
+            android:name="habitId"
+            app:argType="integer" />
+    </dialog>
 </navigation>

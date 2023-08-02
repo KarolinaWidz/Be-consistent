@@ -132,7 +132,6 @@
         android:layout_height="wrap_content"
         android:drawableTint="?colorOnSurfaceInverse"
         android:text="@string/edit"
-        android:visibility="invisible"
         app:icon="@drawable/ic_edit"
         app:layout_constraintBottom_toTopOf="@+id/delete_btn"
         app:layout_constraintEnd_toEndOf="parent"

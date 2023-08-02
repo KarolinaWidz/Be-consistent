@@ -5,9 +5,11 @@
     <string name="check">Check</string>
     <string name="habit_description">description</string>
     <string name="add_habit">Add new habit</string>
+    <string name="edit_habit">Edit existing habit</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
     <string name="successfully_added">Successfully added new habit</string>
+    <string name="successfully_edited">Successfully edited habit</string>
     <string name="operation_unsuccessful">Operation unsuccessful</string>
     <string name="habit">Habit</string>
     <string name="streak">Streak</string>
