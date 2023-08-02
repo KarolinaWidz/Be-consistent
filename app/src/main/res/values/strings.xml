@@ -19,4 +19,7 @@
     <string name="edit">Edit</string>
     <string name="max_streak">Max Streak</string>
     <string name="visualization_of_the_streak">Visualization of the streak</string>
+    <string name="delete_habit_confirmation">Are you sure you want to delete the habit?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 </resources>

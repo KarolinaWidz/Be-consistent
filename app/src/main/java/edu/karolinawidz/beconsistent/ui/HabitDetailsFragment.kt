@@ -9,6 +9,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import edu.karolinawidz.beconsistent.R
 import edu.karolinawidz.beconsistent.database.model.Habit
 import edu.karolinawidz.beconsistent.databinding.FragmentHabitDetailsBinding
+import edu.karolinawidz.beconsistent.ui.dialogs.DeleteHabitDialogFragment
 
 import edu.karolinawidz.beconsistent.viewModel.HabitDetailsViewModel
 
@@ -16,6 +17,7 @@ import edu.karolinawidz.beconsistent.viewModel.HabitDetailsViewModel
 class HabitDetailsFragment : Fragment(R.layout.fragment_habit_details) {
     companion object {
         private const val HABIT_ID_KEY = "habitId"
+        private const val TAG = "HabitDetailsFragment"
     }
 
     private var _binding: FragmentHabitDetailsBinding? = null
@@ -49,8 +51,14 @@ class HabitDetailsFragment : Fragment(R.layout.fragment_habit_details) {
         binding.habitText.text = habit.text
         binding.streakValue.text = habit.streak.toString()
         binding.maxStreakValue.text = habit.maxStreak.toString()
-        binding.deleteBtn.setOnClickListener { deleteHabit(habit) }
-        binding.editBtn.setOnClickListener{editHabit()}
+        binding.deleteBtn.setOnClickListener { showDeleteHabitDialog(habit) }
+        binding.editBtn.setOnClickListener { editHabit() }
+    }
+
+    private fun showDeleteHabitDialog(habit: Habit) {
+        val dialog = DeleteHabitDialogFragment()
+        dialog.deleteHabitListener = { deleteHabit(habit) }
+        dialog.show(requireActivity().supportFragmentManager, TAG)
     }
 
     private fun deleteHabit(habit: Habit) {
