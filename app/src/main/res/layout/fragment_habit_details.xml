@@ -133,13 +133,12 @@
         style="@style/Widget.Material3.Button.ElevatedButton.Icon"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="30dp"
         android:drawableTint="?colorOnSurfaceInverse"
         android:text="@string/edit"
         app:icon="@drawable/ic_edit"
         app:layout_constraintBottom_toTopOf="@+id/delete_btn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/max_streak_card"
+        app:layout_constraintStart_toStartOf="@+id/streak_card"
         app:layout_constraintTop_toTopOf="@+id/guidelineHorizontal2" />
 
     <Button
@@ -147,13 +146,12 @@
         style="@style/Widget.Material3.Button.ElevatedButton.Icon"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="30dp"
         android:drawableTint="?colorOnSurfaceInverse"
         android:text="@string/delete"
         app:icon="@drawable/ic_delete"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/edit_btn"
+        app:layout_constraintStart_toStartOf="@+id/edit_btn"
         app:layout_constraintTop_toBottomOf="@+id/edit_btn" />
 
     <androidx.constraintlayout.widget.Guideline
