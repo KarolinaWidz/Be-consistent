@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import edu.karolinawidz.beconsistent.database.HabitDao
 import edu.karolinawidz.beconsistent.database.model.Habit
+import edu.karolinawidz.beconsistent.enums.GrowingStage
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -20,4 +21,9 @@ class HabitDetailsViewModel @Inject constructor(private val dao: HabitDao) : Vie
     fun deleteHabit(habit: Habit) {
         viewModelScope.launch { dao.delete(habit) }
     }
+
+    fun getDrawableForStreak(habit: Habit): Int {
+        return GrowingStage.matchStreak(habit.streak).drawableId
+    }
+
 }

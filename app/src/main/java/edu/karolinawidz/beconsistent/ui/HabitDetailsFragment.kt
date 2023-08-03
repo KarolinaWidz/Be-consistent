@@ -2,6 +2,7 @@ package edu.karolinawidz.beconsistent.ui
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -10,7 +11,6 @@ import edu.karolinawidz.beconsistent.R
 import edu.karolinawidz.beconsistent.database.model.Habit
 import edu.karolinawidz.beconsistent.databinding.FragmentHabitDetailsBinding
 import edu.karolinawidz.beconsistent.ui.dialogs.DeleteHabitDialogFragment
-
 import edu.karolinawidz.beconsistent.viewModel.HabitDetailsViewModel
 
 @AndroidEntryPoint
@@ -53,6 +53,13 @@ class HabitDetailsFragment : Fragment(R.layout.fragment_habit_details) {
         binding.maxStreakValue.text = habit.maxStreak.toString()
         binding.deleteBtn.setOnClickListener { showDeleteHabitDialog(habit) }
         binding.editBtn.setOnClickListener { editHabit() }
+        binding.habitImageView.setImageDrawable(
+            ResourcesCompat.getDrawable(
+                resources,
+                viewModel.getDrawableForStreak(habit),
+                null
+            )
+        )
     }
 
     private fun showDeleteHabitDialog(habit: Habit) {
@@ -73,5 +80,4 @@ class HabitDetailsFragment : Fragment(R.layout.fragment_habit_details) {
             )
         )
     }
-
 }
