@@ -11,11 +11,12 @@
     <TextView
         android:id="@+id/habit_text"
         style="@style/TextAppearance.Material3.HeadlineLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
         android:layout_marginVertical="20dp"
         android:padding="10dp"
         app:layout_constraintBottom_toTopOf="@+id/image_card"
+        app:layout_constraintEnd_toEndOf="@+id/image_card"
         app:layout_constraintStart_toStartOf="@+id/image_card"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="My Habit" />
