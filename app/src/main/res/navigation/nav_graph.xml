@@ -15,7 +15,11 @@
             app:destination="@id/addHabitDialogFragment" />
         <action
             android:id="@+id/action_habitListFragment_to_habitDetails"
-            app:destination="@id/habitDetailsFragment" />
+            app:destination="@id/habitDetailsFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
     </fragment>
     <dialog
         android:id="@+id/addHabitDialogFragment"
