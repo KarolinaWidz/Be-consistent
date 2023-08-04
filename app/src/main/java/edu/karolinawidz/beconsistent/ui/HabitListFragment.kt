@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.SimpleItemAnimator
 import dagger.hilt.android.AndroidEntryPoint
 import edu.karolinawidz.beconsistent.R
 import edu.karolinawidz.beconsistent.broadcastReceiver.DateChangedReceiver
-import edu.karolinawidz.beconsistent.database.model.Habit
+import edu.karolinawidz.beconsistent.data.model.Habit
 import edu.karolinawidz.beconsistent.databinding.FragmentHabitListBinding
 import edu.karolinawidz.beconsistent.ui.adapter.HabitRecyclerViewAdapter
 import edu.karolinawidz.beconsistent.viewModel.HabitViewModel

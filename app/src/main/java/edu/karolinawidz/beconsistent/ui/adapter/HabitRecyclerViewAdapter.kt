@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import edu.karolinawidz.beconsistent.R
-import edu.karolinawidz.beconsistent.database.model.Habit
+import edu.karolinawidz.beconsistent.data.model.Habit
 import edu.karolinawidz.beconsistent.databinding.HabitItemBinding
 
 

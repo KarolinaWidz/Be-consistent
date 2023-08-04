@@ -1,12 +1,13 @@
-package edu.karolinawidz.beconsistent.database
+package edu.karolinawidz.beconsistent.data
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import edu.karolinawidz.beconsistent.database.model.Habit
-import edu.karolinawidz.beconsistent.database.util.DateConverter
+import edu.karolinawidz.beconsistent.data.dao.HabitDao
+import edu.karolinawidz.beconsistent.data.model.Habit
+import edu.karolinawidz.beconsistent.data.util.DateConverter
 
 @Database(entities = [Habit::class], version = 5)
 @TypeConverters(DateConverter::class)

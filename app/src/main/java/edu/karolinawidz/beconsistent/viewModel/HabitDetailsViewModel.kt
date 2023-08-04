@@ -4,22 +4,22 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import edu.karolinawidz.beconsistent.database.HabitDao
-import edu.karolinawidz.beconsistent.database.model.Habit
+import edu.karolinawidz.beconsistent.data.model.Habit
+import edu.karolinawidz.beconsistent.data.repository.HabitRepository
 import edu.karolinawidz.beconsistent.enums.GrowingStage
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class HabitDetailsViewModel @Inject constructor(private val dao: HabitDao) :
-    HabitBaseViewModel(dao) {
+class HabitDetailsViewModel @Inject constructor(private val repository: HabitRepository) :
+    HabitBaseViewModel(repository) {
 
     fun getSpecificHabit(habitId: Int): LiveData<Habit> {
-        return dao.getHabitById(habitId).asLiveData()
+        return repository.getHabitById(habitId).asLiveData()
     }
 
     fun deleteHabit(habit: Habit) {
-        viewModelScope.launch { dao.delete(habit) }
+        viewModelScope.launch { repository.deleteHabit(habit) }
     }
 
     fun getDrawableForStreak(habit: Habit): Int {

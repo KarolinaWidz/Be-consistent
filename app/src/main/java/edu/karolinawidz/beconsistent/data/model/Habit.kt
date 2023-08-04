@@ -1,4 +1,4 @@
-package edu.karolinawidz.beconsistent.database.model
+package edu.karolinawidz.beconsistent.data.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

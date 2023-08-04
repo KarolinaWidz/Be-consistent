@@ -14,7 +14,7 @@ import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import edu.karolinawidz.beconsistent.R
 import edu.karolinawidz.beconsistent.broadcastReceiver.DateChangedReceiver
-import edu.karolinawidz.beconsistent.database.model.Habit
+import edu.karolinawidz.beconsistent.data.model.Habit
 import edu.karolinawidz.beconsistent.databinding.FragmentHabitDetailsBinding
 import edu.karolinawidz.beconsistent.ui.dialogs.DeleteHabitDialogFragment
 import edu.karolinawidz.beconsistent.viewModel.HabitDetailsViewModel

@@ -1,4 +1,4 @@
-package edu.karolinawidz.beconsistent.database.util
+package edu.karolinawidz.beconsistent.data.util
 
 import androidx.room.TypeConverter
 import java.time.LocalDate
