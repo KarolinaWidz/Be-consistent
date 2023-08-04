@@ -1,7 +1,6 @@
 package edu.karolinawidz.beconsistent.viewModel
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -12,7 +11,8 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class HabitDetailsViewModel @Inject constructor(private val dao: HabitDao) : ViewModel() {
+class HabitDetailsViewModel @Inject constructor(private val dao: HabitDao) :
+    HabitBaseViewModel(dao) {
 
     fun getSpecificHabit(habitId: Int): LiveData<Habit> {
         return dao.getHabitById(habitId).asLiveData()

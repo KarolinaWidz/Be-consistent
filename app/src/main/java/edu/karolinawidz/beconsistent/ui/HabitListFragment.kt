@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.core.content.ContextCompat.RECEIVER_NOT_EXPORTED
@@ -23,6 +24,9 @@ import edu.karolinawidz.beconsistent.viewModel.HabitViewModel
 
 @AndroidEntryPoint
 class HabitListFragment : Fragment(R.layout.fragment_habit_list) {
+    companion object {
+        private const val TAG = "HabitListFragment"
+    }
 
     private var _binding: FragmentHabitListBinding? = null
     private val binding get() = _binding!!
@@ -34,11 +38,14 @@ class HabitListFragment : Fragment(R.layout.fragment_habit_list) {
     override fun onStart() {
         super.onStart()
         dateChangedReceiver = DateChangedReceiver()
+        dateChangedReceiver.dateChangedAction = {
+            viewModel.clearAllBrokenStreaks()
+            adapter.notifyDataSetChanged()
+        }
         IntentFilter(Intent.ACTION_DATE_CHANGED).also {
             registerReceiver(requireContext(), dateChangedReceiver, it, RECEIVER_NOT_EXPORTED)
+            Log.i(TAG, "receiver registered")
         }
-        dateChangedReceiver.dateChangedAction = { viewModel.clearAllBrokenStreaks() }
-        dateChangedReceiver.actualizeIcons = { adapter.notifyDataSetChanged() }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -51,6 +58,7 @@ class HabitListFragment : Fragment(R.layout.fragment_habit_list) {
     override fun onStop() {
         super.onStop()
         requireActivity().unregisterReceiver(dateChangedReceiver)
+        Log.i(TAG, "receiver unregistered")
     }
 
     override fun onDestroyView() {
