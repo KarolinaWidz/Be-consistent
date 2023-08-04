@@ -174,12 +174,14 @@
         style="@style/TextAppearance.Material3.HeadlineLarge"
         android:layout_width="0dp"
         android:layout_height="90dp"
+        android:ellipsize="end"
+        android:maxLines="2"
         android:padding="5dp"
         app:layout_constraintBottom_toTopOf="@+id/image_card"
         app:layout_constraintEnd_toEndOf="@+id/image_card"
         app:layout_constraintStart_toStartOf="@+id/image_card"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="My Habit" />
+        tools:text="My very very very very very long habit" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

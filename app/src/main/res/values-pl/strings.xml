@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Be consistent</string>
+    <string name="delete">Usuń</string>
+    <string name="done">Zrobione</string>
+    <string name="check">Wykonaj</string>
+    <string name="habit_description">Opis</string>
+    <string name="add_habit">Dodaj nowy nawyk</string>
+    <string name="edit_habit">Edytuj istniejący nawyk</string>
+    <string name="cancel">Anuluj</string>
+    <string name="successfully_added">Pomyślnie dodano nowy nawyk</string>
+    <string name="successfully_edited">Pomyślnie edytowano nawyk</string>
+    <string name="operation_unsuccessful">Operacja zakończona niepowodzeniem</string>
+    <string name="habit">Nawyk</string>
+    <string name="streak">Passa</string>
+    <string name="habit_marked_as_done">Nawyk wykonany</string>
+    <string name="habit_done">Gratulacje! Wykonano %1$s!</string>
+    <string name="edit">Edytuj</string>
+    <string name="max_streak">Najdłuższa passa</string>
+    <string name="visualization_of_the_streak">Wizualizacja passy</string>
+    <string name="delete_habit_confirmation">Czy na pewno chcesz usunąć nawyk?</string>
+    <string name="yes">Tak</string>
+    <string name="no">Nie</string>
+</resources>

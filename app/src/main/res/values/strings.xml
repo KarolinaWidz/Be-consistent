@@ -3,10 +3,10 @@
     <string name="delete">Delete</string>
     <string name="done">Done</string>
     <string name="check">Check</string>
-    <string name="habit_description">description</string>
+    <string name="habit_description">Description</string>
     <string name="add_habit">Add new habit</string>
     <string name="edit_habit">Edit existing habit</string>
-    <string name="ok">OK</string>
+    <string name="ok" translatable="false">OK</string>
     <string name="cancel">Cancel</string>
     <string name="successfully_added">Successfully added new habit</string>
     <string name="successfully_edited">Successfully edited habit</string>
@@ -15,7 +15,6 @@
     <string name="streak">Streak</string>
     <string name="habit_marked_as_done">Habit marked as done</string>
     <string name="habit_done">Congratulations! %1$s is done!</string>
-    <string name="go_to_habit_info">Go to habit info</string>
     <string name="edit">Edit</string>
     <string name="max_streak">Max Streak</string>
     <string name="visualization_of_the_streak">Visualization of the streak</string>

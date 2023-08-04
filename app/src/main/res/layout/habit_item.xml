@@ -11,6 +11,8 @@
         android:id="@+id/habit_description"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="5"
         android:padding="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,7 +44,7 @@
     <Button
         android:id="@+id/check_done_btn"
         style="@style/Widget.Material3.Button.ElevatedButton"
-        android:layout_width="90dp"
+        android:layout_width="115dp"
         android:layout_height="wrap_content"
         android:text="@string/check"
         app:layout_constraintBottom_toBottomOf="@+id/habit_description"
