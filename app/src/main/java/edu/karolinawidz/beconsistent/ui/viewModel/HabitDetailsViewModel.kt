@@ -1,4 +1,4 @@
-package edu.karolinawidz.beconsistent.viewModel
+package edu.karolinawidz.beconsistent.ui.viewModel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.asLiveData

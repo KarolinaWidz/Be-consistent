@@ -9,7 +9,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputLayout
 import dagger.hilt.android.AndroidEntryPoint
 import edu.karolinawidz.beconsistent.R
-import edu.karolinawidz.beconsistent.viewModel.EditHabitDialogViewModel
+import edu.karolinawidz.beconsistent.ui.viewModel.EditHabitDialogViewModel
 
 @AndroidEntryPoint
 class EditHabitDialogFragment : DialogFragment() {

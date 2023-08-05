@@ -20,7 +20,7 @@ import edu.karolinawidz.beconsistent.broadcastReceiver.DateChangedReceiver
 import edu.karolinawidz.beconsistent.data.model.Habit
 import edu.karolinawidz.beconsistent.databinding.FragmentHabitListBinding
 import edu.karolinawidz.beconsistent.ui.adapter.HabitRecyclerViewAdapter
-import edu.karolinawidz.beconsistent.viewModel.HabitViewModel
+import edu.karolinawidz.beconsistent.ui.viewModel.HabitViewModel
 
 @AndroidEntryPoint
 class HabitListFragment : Fragment(R.layout.fragment_habit_list) {

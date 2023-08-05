@@ -17,7 +17,7 @@ import edu.karolinawidz.beconsistent.broadcastReceiver.DateChangedReceiver
 import edu.karolinawidz.beconsistent.data.model.Habit
 import edu.karolinawidz.beconsistent.databinding.FragmentHabitDetailsBinding
 import edu.karolinawidz.beconsistent.ui.dialogs.DeleteHabitDialogFragment
-import edu.karolinawidz.beconsistent.viewModel.HabitDetailsViewModel
+import edu.karolinawidz.beconsistent.ui.viewModel.HabitDetailsViewModel
 
 @AndroidEntryPoint
 class HabitDetailsFragment : Fragment(R.layout.fragment_habit_details) {
