@@ -1,4 +1,4 @@
-package edu.karolinawidz.beconsistent.viewModel
+package edu.karolinawidz.beconsistent.repository
 
 import edu.karolinawidz.beconsistent.data.model.Habit
 import edu.karolinawidz.beconsistent.data.repository.HabitRepository
@@ -22,11 +22,11 @@ class FakeHabitRepository(var habits: MutableList<Habit>) : HabitRepository {
     }
 
     override fun getHabitById(id: Int): Flow<Habit> {
-        return flow { habits.find { it.id == id } }
+        return flow { habits.find { it.id == id }?.let { emit(it) } }
     }
 
     override fun getAllHabits(): Flow<List<Habit>> {
-        return flow { habits }
+        return flow { emit(habits) }
     }
 
     private fun MutableList<Habit>.replace(old: Habit, new: Habit) =

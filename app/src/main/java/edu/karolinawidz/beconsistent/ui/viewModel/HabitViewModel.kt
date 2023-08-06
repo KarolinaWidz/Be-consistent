@@ -30,7 +30,7 @@ class HabitViewModel @Inject constructor(private val repository: HabitRepository
         if (!isHabitAlreadyChecked(habit)) {
             val updatedHabit = habit.copy(
                 streak = habit.streak + 1,
-                lastUpdate = LocalDate.now(),
+                lastChecked = LocalDate.now(),
                 maxStreak = max(habit.maxStreak, habit.streak + 1)
             )
             viewModelScope.launch { repository.updateHabit(updatedHabit) }

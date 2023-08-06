@@ -11,15 +11,15 @@ abstract class HabitBaseViewModel(private val repository: HabitRepository) : Vie
 
     fun clearBrokenStreak(habit: Habit) {
         if (isStreakBroken(habit)) {
-            val updatedHabit = habit.copy(streak = 0, lastUpdate = LocalDate.MIN)
+            val updatedHabit = habit.copy(streak = 0, lastChecked = LocalDate.MIN)
             viewModelScope.launch { repository.updateHabit(updatedHabit) }
         }
     }
 
-    fun isHabitAlreadyChecked(habit: Habit) = habit.lastUpdate.isEqual(LocalDate.now())
+    fun isHabitAlreadyChecked(habit: Habit) = habit.lastChecked.isEqual(LocalDate.now())
 
     private fun isStreakBroken(habit: Habit) =
-        !habit.lastUpdate.isEqual(LocalDate.MIN) && habit.lastUpdate.isBefore(
+        !habit.lastChecked.isEqual(LocalDate.MIN) && habit.lastChecked.isBefore(
             LocalDate.now().minusDays(1)
         )
 }
