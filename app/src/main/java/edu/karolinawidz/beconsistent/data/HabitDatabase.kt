@@ -9,7 +9,7 @@ import edu.karolinawidz.beconsistent.data.dao.HabitDao
 import edu.karolinawidz.beconsistent.data.model.Habit
 import edu.karolinawidz.beconsistent.data.util.DateConverter
 
-@Database(entities = [Habit::class], version = 5)
+@Database(entities = [Habit::class], version = 6)
 @TypeConverters(DateConverter::class)
 abstract class HabitDatabase : RoomDatabase() {
     abstract fun dao(): HabitDao
