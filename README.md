@@ -1,3 +1,10 @@
+# Be consistent
+
+A mobile app that allows you to track your habits and monitor your progress and also provides easy
+access to review your progress and make easy changes or adjustments.
+
+![design](./photos/banner.png)
+
 ## Technologies
 
 - Kotlin
@@ -8,6 +15,8 @@
 - Hilt
 - Navigation component
 - LiveData
+- JUnit5
+- MockK
 
 ## Logo
 
