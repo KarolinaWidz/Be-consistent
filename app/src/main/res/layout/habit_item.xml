@@ -44,7 +44,7 @@
     <Button
         android:id="@+id/check_done_btn"
         style="@style/Widget.Material3.Button.ElevatedButton"
-        android:layout_width="115dp"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:text="@string/check"
         app:layout_constraintBottom_toBottomOf="@+id/habit_description"

@@ -16,7 +16,7 @@ class DateChangedReceiver : BroadcastReceiver() {
 
         if (intent?.action == Intent.ACTION_DATE_CHANGED) {
             dateChangedAction()
-            Log.i(TAG, "Date changed broadcast received")
+            Log.d(TAG, "Date changed broadcast received")
         }
     }
 }

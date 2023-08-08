@@ -44,7 +44,7 @@ class HabitListFragment : Fragment(R.layout.fragment_habit_list) {
         }
         IntentFilter(Intent.ACTION_DATE_CHANGED).also {
             registerReceiver(requireContext(), dateChangedReceiver, it, RECEIVER_NOT_EXPORTED)
-            Log.i(TAG, "receiver registered")
+            Log.d(TAG, "receiver registered")
         }
     }
 
@@ -58,7 +58,7 @@ class HabitListFragment : Fragment(R.layout.fragment_habit_list) {
     override fun onStop() {
         super.onStop()
         requireActivity().unregisterReceiver(dateChangedReceiver)
-        Log.i(TAG, "receiver unregistered")
+        Log.d(TAG, "receiver unregistered")
     }
 
     override fun onDestroyView() {

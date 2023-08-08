@@ -55,14 +55,14 @@ class HabitDetailsFragment : Fragment(R.layout.fragment_habit_details) {
         dateChangedReceiver.dateChangedAction = { viewModel.clearBrokenStreak(habit) }
         IntentFilter(Intent.ACTION_DATE_CHANGED).also {
             registerReceiver(requireContext(), dateChangedReceiver, it, RECEIVER_NOT_EXPORTED)
-            Log.i(TAG, "receiver registered")
+            Log.d(TAG, "receiver registered")
         }
     }
 
     override fun onStop() {
         super.onStop()
         requireActivity().unregisterReceiver(dateChangedReceiver)
-        Log.i(TAG, "receiver unregistered")
+        Log.d(TAG, "receiver unregistered")
     }
 
     override fun onDestroyView() {

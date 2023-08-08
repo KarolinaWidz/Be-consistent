@@ -16,13 +16,14 @@ android {
         targetSdk 34
         versionCode 1
         versionName "1.0"
-
+        resConfigs "en", "pl"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             debuggable false
         }

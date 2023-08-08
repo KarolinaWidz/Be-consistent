@@ -23,7 +23,7 @@ class HabitViewModel @Inject constructor(private val repository: HabitRepository
 
     fun clearAllBrokenStreaks() {
         allHabits.value?.forEach { clearBrokenStreak(it) }
-        Log.i(TAG, "Broken streaks have been cleared")
+        Log.d(TAG, "Broken streaks have been cleared")
     }
 
     fun checkDoneHabit(habit: Habit) {
