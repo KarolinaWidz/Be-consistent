@@ -13,8 +13,6 @@ access to review your progress and make easy changes or adjustments.
 - Room
 - Coroutines
 - Hilt
-- Navigation component
-- LiveData
 - JUnit5
 - MockK
 
